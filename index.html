@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inviso Login dengan Background Slideshow</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #eee;
+    overflow: hidden;
+  }
+
+  body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Slideshow container untuk background */
+  .slideshow-background {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -2;
+  }
+
+  .slideshow-background img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+
+  .slideshow-background img.active {
+    opacity: 1;
+  }
+
+  /* Overlay supaya tulisan jelas */
+  .overlay {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+  }
+
+  /* Login container */
+  .login-container {
+    background: rgba(40, 40, 55, 0.75);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    width: 350px;
+    padding: 40px 30px;
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.5),
+      inset 0 0 40px rgba(255,255,255,0.05);
+    text-align: center;
+  }
+
+  .login-container h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #a8a8ff;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 10px #8a8affaa;
+  }
+
+  .login-container p.subtitle {
+    font-size: 1rem;
+    color: #bbb;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    color: #eee;
+    font-size: 1.1rem;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+    transition: background 0.3s ease;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: #bbb;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    background: rgba(255,255,255,0.2);
+    outline: none;
+    box-shadow: 0 0 10px #a8a8ff;
+    color: #fff;
+  }
+
+  button {
+    background: linear-gradient(135deg, #6a6aff, #4545ff);
+    border: none;
+    border-radius: 14px;
+    padding: 15px 0;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(69,69,255,0.6);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+
+  button:hover {
+    background: linear-gradient(135deg, #7b7bff, #5656ff);
+    box-shadow: 0 6px 20px rgba(86,86,255,0.8);
+  }
+
+  button:active {
+    background: linear-gradient(135deg, #5a5aff, #3434ff);
+    box-shadow: 0 3px 10px rgba(52,52,255,0.9);
+  }
+
+  .footer-text {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #888;
+    user-select: text;
+  }
+
+  #cursor {
+  display: inline-block;
+  margin-left: 3px;
+  color: #a8a8ff;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+</style>
+</head>
+<body>
+
+  <div class="slideshow-background">
+    <img src="/images/BG.jpeg" class="active" alt="BG1" />
+    <img src="/images/BG2.jpg" alt="BG2" />
+    <img src="/images/BG3.jpg" alt="BG3" />
+     <img src="/images/BG4.jpg" alt="BG4" />
+      <img src="/images/BG5.jpg" alt="BG5" />
+       <img src="/images/BG6.jpg" alt="BG6" />
+       <img src="/images/BG7.jpg" alt="BG7" />
+       <img src="/images/BG8.jpg" alt="BG8" />
+       <img src="/images/BG9.jpg" alt="BG9" />
+       <img src="/images/BG10.jpg" alt="BG10" />
+       <img src="/images/BG11.jpg" alt="BG11" />
+       <img src="/images/BG12.jpg" alt="BG12" />
+         <img src="/images/BG13.jpg" alt="BG13" />
+        <img src="/images/BG14.jpg" alt="BG14" />
+        <img src="/images/BG15.jpg" alt="BG15" />
+       <img src="/images/BG16.jpg" alt="BG16" />
+        <img src="/images/BG17.jpg" alt="BG17" />
+          <img src="/images/BG18.jpg" alt="BG18" />
+            <img src="/images/BG19.jpg" alt="BG19" />
+              <img src="/images/BG20.jpg" alt="BG20" />
+                <img src="/images/BG21.jpg" alt="BG21" />
+                  <img src="/images/BG22.jpg" alt="BG22" />
+
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="login-container" role="main" aria-label="Login form">
+    <h1>DZULFIKAR</h1>
+    <p class="subtitle" id="typing-text">
+  <span id="typed"></span><span id="cursor">|</span>
+</p>
+
+
+    <form action="#" method="POST" autocomplete="off" novalidate>
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        aria-label="Username"
+        required
+        autofocus
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        aria-label="Password"
+        required
+      />
+      <button type="submit" aria-label="Login">Login</button>
+    </form>
+
+    <p class="footer-text">© 2025 RUANG TAMU </p>
+  </div>
+
+<script>
+  const slides = document.querySelectorAll('.slideshow-background img');
+  let current = 0;
+
+  function nextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  setInterval(nextSlide, 3000); // Ganti gambar tiap 3 detik
+
+const text = "Kalo Tidak Punya Username JANGAN LOGIN ANJING";
+  const typedEl = document.getElementById("typed");
+
+  let i = 0;
+
+  function typeLoop() {
+    if (i < text.length) {
+      typedEl.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeLoop, 100); // kecepatan ketik
+    } else {
+      setTimeout(() => {
+        // Setelah selesai ngetik, tunggu 2 detik
+        typedEl.textContent = ""; // hapus sekaligus
+        i = 0;
+        setTimeout(typeLoop, 500); // jeda sebelum ulang
+      }, 2000);
+    }
+  }
+
+  typeLoop();
+</script>
+
+</body>
+</html>
