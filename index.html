@@ -156,8 +156,8 @@
 <body>
 
   <div class="slideshow-background">
-    <img src="BG.jpeg" class="active" alt="BG1" />
-    <img src="BG2.jpg" alt="BG2" />
+    <img src="BG.jpg" class="active" alt="BG1" />
+    <img src="/BG2.jpg" alt="BG2" />
     <img src="BG3.jpg" alt="BG3" />
      <img src="BG4.jpg" alt="BG4" />
       <img src="BG5.jpg" alt="BG5" />
@@ -168,23 +168,13 @@
        <img src="BG10.jpg" alt="BG10" />
        <img src="BG11.jpg" alt="BG11" />
        <img src="BG12.jpg" alt="BG12" />
-         <img src="BG13.jpg" alt="BG13" />
-        <img src="BG14.jpg" alt="BG14" />
-        <img src="BG15.jpg" alt="BG15" />
-       <img src="BG16.jpg" alt="BG16" />
-        <img src="BG17.jpg" alt="BG17" />
-          <img src="BG18.jpg" alt="BG18" />
-            <img src="BG19.jpg" alt="BG19" />
-              <img src="BG20.jpg" alt="BG20" />
-                <img src="BG21.jpg" alt="BG21" />
-                  <img src="BG22.jpg" alt="BG22" />
-
+         
   </div>
 
   <div class="overlay"></div>
 
   <div class="login-container" role="main" aria-label="Login form">
-    <h1>DZULFIKAR</h1>
+    <h1>LOGIN</h1>
     <p class="subtitle" id="typing-text">
   <span id="typed"></span><span id="cursor">|</span>
 </p>
@@ -222,9 +212,9 @@
     slides[current].classList.add('active');
   }
 
-  setInterval(nextSlide, 3000); // Ganti gambar tiap 3 detik
+  setInterval(nextSlide, 5000); // Ganti gambar tiap 5 detik
 
-const text = "Kalo Tidak Punya Username JANGAN LOGIN ANJING";
+const text = "masukan username !";
   const typedEl = document.getElementById("typed");
 
   let i = 0;
@@ -239,8 +229,8 @@ const text = "Kalo Tidak Punya Username JANGAN LOGIN ANJING";
         // Setelah selesai ngetik, tunggu 2 detik
         typedEl.textContent = ""; // hapus sekaligus
         i = 0;
-        setTimeout(typeLoop, 500); // jeda sebelum ulang
-      }, 2000);
+        setTimeout(typeLoop, 3000); // jeda sebelum ulang
+      }, 6000);
     }
   }
 
