@@ -1,231 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inviso Login dengan Background Slideshow</title>
-<style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #eee;
-    overflow: hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inviso Login & Register dengan Background Slideshow</title>
 
-  body {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  <!-- Link Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
 
-  /* Slideshow container untuk background */
-  .slideshow-background {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: -2;
-  }
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #eee;
+      overflow: hidden;
+    }
 
-  .slideshow-background img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-  }
+    body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .slideshow-background img.active {
-    opacity: 1;
-  }
+    .slideshow-background {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -2;
+    }
 
-  /* Overlay supaya tulisan jelas */
-  .overlay {
-    position: fixed;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.5);
-    z-index: -1;
-  }
+    .slideshow-background img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
 
-  /* Login container */
-  .login-container {
-    background: rgba(40, 40, 55, 0.75);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    width: 350px;
-    padding: 40px 30px;
-    box-shadow:
-      0 10px 30px rgba(0,0,0,0.5),
-      inset 0 0 40px rgba(255,255,255,0.05);
-    text-align: center;
-  }
+    .slideshow-background img.active {
+      opacity: 1;
+    }
 
-  .login-container h1 {
-    font-weight: 600;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #a8a8ff;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 10px #8a8affaa;
-  }
+    .overlay {
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
 
-  .login-container p.subtitle {
-    font-size: 1rem;
-    color: #bbb;
-    margin-bottom: 30px;
-    letter-spacing: 0.05em;
-  }
+    .login-container {
+      background: rgba(40, 40, 55, 0.75);
+      backdrop-filter: blur(1px);
+      border-radius: 20px;
+      width: 470px;
+      padding: 40px 30px;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.5),
+        inset 0 0 40px rgba(255,255,255,0.05);
+      text-align: center;
+    }
 
-  form {
-    display: flex;
-    flex-direction: column;
-  }
+h1 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: -1 10px;
+  color: #f5f5f0; /* warna putih susu */
 
-  input[type="text"],
-  input[type="password"] {
-    background: rgba(255,255,255,0.1);
-    border: none;
-    border-radius: 12px;
-    padding: 14px 20px;
-    margin-bottom: 20px;
-    color: #eee;
-    font-size: 1.1rem;
-    box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
-    transition: background 0.3s ease;
-  }
-
-  input[type="text"]::placeholder,
-  input[type="password"]::placeholder {
-    color: #bbb;
-  }
-
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    background: rgba(255,255,255,0.2);
-    outline: none;
-    box-shadow: 0 0 10px #a8a8ff;
-    color: #fff;
-  }
-
-  button {
-    background: linear-gradient(135deg, #6a6aff, #4545ff);
-    border: none;
-    border-radius: 14px;
-    padding: 15px 0;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(69,69,255,0.6);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    user-select: none;
-  }
-
-  button:hover {
-    background: linear-gradient(135deg, #7b7bff, #5656ff);
-    box-shadow: 0 6px 20px rgba(86,86,255,0.8);
-  }
-
-  button:active {
-    background: linear-gradient(135deg, #5a5aff, #3434ff);
-    box-shadow: 0 3px 10px rgba(52,52,255,0.9);
-  }
-
-  .footer-text {
-    margin-top: 25px;
-    font-size: 0.85rem;
-    color: #888;
-    user-select: text;
-  }
-
-  #cursor {
-  display: inline-block;
-  margin-left: 3px;
-  color: #a8a8ff;
-  animation: blink 1s steps(2, start) infinite;
+  /* Glow lampu dengan text-shadow berlapis warna putih susu */
+  text-shadow:
+    /* cahaya utama putih susu */
+    0 0 6px #eaeae5,     /* cahaya lebih jauh putih pucat */
+    0 0 4px #dcdcd5cc;   /* efek blur glow putih lembut semi transparan */
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+    p.subtitle {
+      font-size: 1rem;
+      color: #fafafa;
+      margin-bottom: 30px;
+      letter-spacing: 0.09em;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 12px;
+      padding: 14px 40px 14px 20px; /* padding kanan cukup untuk icon */
+      margin-bottom: 30px;
+      color: #eee;
+      font-size: 1.1rem;
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+      transition: background 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder {
+      color: #bbb;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background: rgba(255,255,255,0.2);
+      outline: none;
+      box-shadow: 0 0 10px #a8a8ff;
+      color: #fff;
+    }
+
+    button {
+      background: linear-gradient(135deg, #6a6aff, #4545ff);
+      border: none;
+      border-radius: 14px;
+      padding: 15px 0;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(69,69,255,0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      width: 100%;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #7b7bff, #5656ff);
+      box-shadow: 0 6px 20px rgba(86,86,255,0.8);
+    }
+
+    button:active {
+      background: linear-gradient(135deg, #5a5aff, #3434ff);
+      box-shadow: 0 3px 10px rgba(52,52,255,0.9);
+    }
+
+    .btn.switch-btn {
+      margin-top: 10px;
+      background: transparent;
+      color: #a8a8ff;
+      font-size: 1rem;
+      box-shadow: none;
+      font-weight: 500;
+      width: auto;
+      padding: 0;
+    }
+
+    .btn.switch-btn:hover {
+      text-decoration: underline;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .password-wrapper {
+      position: relative;
+      
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 38%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      user-select: none;
+      font-size: 1.2rem;
+      color: #bbb;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+    }
+
+    .toggle-password:hover {
+      color: #a8a8ff;
+      
+    }
+
+    .footer-text {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      color: #888;
+      user-select: text;
+    }
+
+    /* Responsif untuk layar kecil */
+    @media (max-width: 400px) {
+      .login-container {
+        width: 90vw;
+        padding: 15px 10px;
+        border-radius: 5px;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        padding: 12px 40px 12px 16px;
+        font-size: 1rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px 0;
+      }
+
+      .footer-text {
+        font-size: 0.75rem;
+        margin-top: 20px;
+      }
+    }
+    #cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1em;
+      margin-left: 5px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .footer {
+  background-color: transparent;
+  color: #eee;
+  padding: 50px 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+    margin-top: 3px;
 }
 
-</style>
+.footer-text {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center; /* posisikan ikon ke tengah */
+  align-items: center;
+  gap: 29px; /* jarak antar ikon */
+  margin-top: 300px;
+}
+
+
+.social-icons a {
+  color: #eee;
+  margin: 0 15px;
+  font-size: 45px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #1da1f2; /* warna biru sebagai contoh hover */
+}
+
+  </style>
 </head>
 <body>
 
   <div class="slideshow-background">
     <img src="BG.jpg" class="active" alt="BG1" />
-    <img src="/BG2.jpg" alt="BG2" />
-    <img src="BG3.jpg" alt="BG3" />
-
+    <img src="BG2.jpg"  />
+    <img src="BG3.jpg"  />
+    <img src="BG4.jpg"  />
+    <img src="BG5.jpg"  />
+    <img src="BG6.jpg"  />
+    <img src="BG7.jpg"  />
+    <img src="BG8.jpg"  />
+    <img src="BG9.jpg"  />
+    <img src="BG10.jpg" />
+    <img src="BG11.jpg" />
+    <img src="BG12.jpg" />
+    <img src="BG13.jpg" />
+    <img src="BG14.jpg" />
+    <img src="BG15.jpg" />
+    <img src="BG16.jpg" />
+    <img src="BG17.jpg" />
+    <img src="BG18.jpg" />
+    <img src="BG19.jpg" />
+    <img src="BG20.jpg" />
+    <img src="BG21.jpg" />
+    <img src="BG22.jpg" />
+    <img src="BG23.jpg" />
+    <img src="BG24.jpg" />
+    <img src="BG25.jpg" />
+    <img src="BG26.jpg" />
+    <img src="BG27.jpg" />
+    <img src="BG28.jpg" />
+    <img src="BG29.jpg" />
+    <img src="BG30.jpg" />
+    <img src="BG31.jpg" />
+    <img src="BG32.jpg" />
+    <img src="BG33.jpg" />
+    <img src="BG34.jpg" />
+    <img src="BG35.jpg" />
+    <img src="BG36.jpg" />
+    <img src="BG37.jpg" />
+    <img src="BG38.jpg" />
+    <img src="BG39.jpg" />
+    <img src="BG40.jpg" />
+    <img src="BG41.jpg" />
+    <img src="BG42.jpg" />
+    <img src="BG43.jpg" />
+    <img src="BG44.jpg" />
+    <img src="BG45.jpg" />
+    <img src="BG46.jpg" />
+    <img src="BG47.jpg" />
+    <img src="BG48.jpg" />
+    <img src="BG49.jpg" />
+    <img src="BG50.jpg" />
+    <img src="BG51.jpg" />
+    <img src="BG52.jpg" />
+    <img src="BG53.jpg" />
+    <img src="BG54.jpg" />
+    <img src="BG55.jpg" />
+    <img src="BG56.jpg" />
+    <img src="BG57.jpg" />
+    <img src="BG58.jpg" />
+    <img src="BG59.jpg" />
+    <img src="BG60.jpg" />
+    <img src="BG61.jpg" />
+    <img src="BG62.jpg" />
+    <img src="BG63.jpg" />
+    <img src="BG64.jpg" />
+    <img src="BG65.jpg" />
+    <img src="BG66.jpg" />
+    <img src="BG67.jpg" />
+    <img src="BG68.jpg" />
+    <img src="BG69.jpg" />
+    <img src="BG70.jpg" />
+    <img src="BG71.jpg" />
+    <img src="BG72.jpg" />
+    <img src="BG73.jpg" />
+    <img src="BG74.jpg" />
+    <img src="BG75.jpg" />
+    <img src="BG76.jpg" />
+    <img src="BG77.jpg" />
+    <img src="BG78.jpg" />
+    <img src="BG79.jpg" />
+    <img src="BG80.jpg" />
+    <img src="BG81.jpg" />
+    <img src="BG82.jpg" />
+    <img src="BG83.jpg" />
+    <img src="BG84.jpg" />
+    <img src="BG85.jpg" />
+    <img src="BG86.jpg" />
+    <img src="BG87.jpg" />
+    <img src="BG88.jpg" />
+    <img src="BG89.jpg"  />
+    <img src="BG90.jpg"  />
+    <img src="BG91.jpg"  />
+    <img src="BG92.jpg"  />
+    <img src="BG93.jpg"  />
+    <img src="BG94.jpg"  />
+    <img src="BG95.jpg"  />
+    <img src="BG96.jpg"  />
+    <img src="BG97.jpg"  />
+    <img src="BG98.jpg"  />
+    <img src="BG99.jpg"  />
+    <img src="BG100.jpg" />
+    <img src="BG101.jpg" />
+    <img src="BG102.jpg" />
+    <img src="BG103.jpg" />
+    <img src="BG104.jpg" />
+    <img src="BG105.jpg" />
+    <img src="BG106.jpg" />
+    <img src="BG107.jpg" />
+    <img src="BG108.jpg" />
+    <img src="BG109.jpg" />
+    <img src="BG110.jpg" />
+    <img src="BG111.jpg" />
+    <img src="BG112.jpg" />
+    <img src="BG111.jpg" />
+    <img src="BG112.jpg" />
+    <img src="BG111.jpg" />
+    <img src="BG112.jpg" />
+    <img src="BG111.jpg" />
+    <img src="BG112.jpg" />
+    <img src="BG113.jpg" />
+    <img src="BG114.jpg" />
+    <img src="BG115.jpg" />
+    <img src="BG116.jpg" />
+    <img src="BG117.jpg" />
+    <img src="BG118.jpg" />
+    <img src="BG119.jpg" />
+    <img src="BG120.jpg" />
+    <img src="BG1121.jpg"/>
+    <img src="BG112.jpg" />
+    <img src="BG122.jpg" />
+    <img src="BG123.jpg" />
+    <img src="BG124.jpg" />
+    <img src="BG125.jpg" />
+    <img src="BG126.jpg" />
+    <img src="BG127.jpg" />
+    <img src="BG128.jpg" />
+    <img src="BG129.jpg" />
+    <img src="BG130.jpg" />
+    <img src="BG131.jpg" />
+    <img src="BG132.jpg" />
+    <img src="BG133.jpg" />
+    <img src="BG134.jpg" />
+    <img src="BG135.jpg" />
+    <img src="BG136.jpg" />
+    <img src="BG137.jpg" />
+    <img src="BG138.jpg" />
+    <img src="BG139.jpg" />
+    <img src="BG140.jpg" />
+    <img src="BG141.jpg" />
+    <img src="BG142.jpg" />
+    <img src="BG143.jpg" />
+    <img src="BG144.jpg" />
+    <img src="BG145.jpg" />
+    <img src="BG146.jpg" />
+    <img src="BG147.jpg" />
+    <img src="BG148.jpg" />
+    <img src="BG149.jpg" />
+    <img src="BG150.jpg" />
+    <img src="BG151.jpg" />
+    <img src="BG152.jpg" />
+    <img src="BG153.jpg" />
+    <img src="BG154.jpg" />
+    <img src="BG155.jpg" />
+    <img src="BG156.jpg" />
+    <img src="BG157.jpg" />
+    <img src="BG158.jpg" />
+    <img src="BG159.jpg" />
+    <img src="BG160.jpg" />
+    <img src="BG161.jpg" />
+    <img src="BG162.jpg" />
+    <img src="BG163.jpg" />
+    <img src="BG164.jpg" />
+    <img src="BG165.jpg" />
+    <img src="BG166.jpg" />
+    <img src="BG167.jpg" />
   </div>
 
   <div class="overlay"></div>
 
-  <div class="login-container" role="main" aria-label="Login form">
-    <h1>LOGIN</h1>
+  <div class="login-container" role="main" aria-label="Login and Register forms">
+    <h1 id="form-title">LOGIN</h1>
     <p class="subtitle" id="typing-text">
-  <span id="typed"></span><span id="cursor">|</span>
-</p>
+      <span id="typed"></span><span id="cursor">|</span>
+    </p>
 
-
-    <form action="#" method="POST" autocomplete="off" novalidate>
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        aria-label="Username"
-        required
-        autofocus
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        aria-label="Password"
-        required
-      />
-      <button type="submit" aria-label="Login">Login</button>
+    <!-- Login Form -->
+    <form id="loginForm" class="active" autocomplete="off" novalidate>
+      <input type="text" name="username" placeholder="Username" aria-label="Username" required autofocus />
+      <div class="password-wrapper">
+        <input type="password" id="loginPassword" name="password" placeholder="Password" aria-label="Password" required />
+        <i class="ri-eye-line toggle-password" onclick="togglePassword('loginPassword')" role="button" aria-label="Toggle Password Visibility" tabindex="0"></i>
+      </div>
+      <button type="submit" class="btn submit-btn">MASUK</button>
+      <button type="button" class="btn switch-btn" onclick="switchForm('register')">DAFTAR</button>
     </form>
 
-    <p class="footer-text">© 2025 RUANG TAMU </p>
+    <!-- Register Form -->
+    <form id="registerForm" autocomplete="off" novalidate>
+      <input type="text" name="username" placeholder="Username" aria-label="Username" required />
+      <div class="password-wrapper">
+        <input type="password" id="regPassword" name="password" placeholder="Password" aria-label="Password" required />
+        <i class="ri-eye-line toggle-password" onclick="togglePassword('regPassword')" role="button" aria-label="Toggle Password Visibility" tabindex="0"></i>
+      </div>
+      <div class="password-wrapper">
+        <input type="password" id="regConfirm" name="confirmPassword" placeholder="Confirm Password" aria-label="Confirm Password" required />
+        <i class="ri-eye-line toggle-password" onclick="togglePassword('regConfirm')" role="button" aria-label="Toggle Password Visibility" tabindex="0"></i>
+      </div>
+      <button type="submit" class="btn submit-btn">DAFTAR</button>
+      <button type="button" class="btn switch-btn" onclick="switchForm('login')">MASUK</button>
+    </form>
+
+    <footer class="footer">
+
+  <div class="social-icons">
+    <a href="https://web.facebook.com/rayhanganteng.rayhanganteng.90" target="_blank" aria-label="Facebook">
+      <i class="ri-facebook-fill"></i>
+    </a>
+
+      <a href="https://wa.me/6282197770219" target="_blank" aria-label="WhatsApp">
+      <i class="ri-whatsapp-fill"></i>
+
+    </a>
+    <a href="https://www.instagram.com/rhanray_/" target="_blank" aria-label="Instagram">
+      <i class="ri-instagram-fill"></i>
+    </a>
+ <a href="https://x.com/" target="_blank" aria-label="X (Twitter)">
+  <i class="ri-twitter-x-line"></i>
+</a>
+
   </div>
 
 <script>
+  // Slideshow background
   const slides = document.querySelectorAll('.slideshow-background img');
   let current = 0;
-
   function nextSlide() {
     slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
   }
+  setInterval(nextSlide, 4000);
 
-  setInterval(nextSlide, 5000); // Ganti gambar tiap 5 detik
-
-const text = "masukan username !";
   const typedEl = document.getElementById("typed");
+  const cursor = document.getElementById("cursor");
 
+  const texts = {
+    login: "silahkan masukan username",
+    register: "daftar username dan password"
+  };
+
+  let currentForm = 'login';
   let i = 0;
+  let typingInterval;
+  let resetTimeout;
 
-  function typeLoop() {
-    if (i < text.length) {
-      typedEl.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeLoop, 100); // kecepatan ketik
+  function typeText(text) {
+    clearInterval(typingInterval);
+    clearTimeout(resetTimeout);
+    i = 0;
+    typedEl.textContent = "";
+
+    typingInterval = setInterval(() => {
+      if (i < text.length) {
+        typedEl.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(typingInterval);
+        resetTimeout = setTimeout(() => {
+          typedEl.textContent = "";
+          i = 0;
+          typeText(text); // loop ulang
+        }, 4500);
+      }
+    }, 95); // Kecepatan ketik
+  }
+
+  // Mulai pertama kali
+  typeText(texts.login);
+
+  // Switch form
+  function switchForm(target) {
+    currentForm = target;
+    document.getElementById('loginForm').classList.remove('active');
+    document.getElementById('registerForm').classList.remove('active');
+    document.getElementById(target + 'Form').classList.add('active');
+    document.getElementById('form-title').textContent = target.toUpperCase();
+
+    // Reset ketikan saat ganti form
+    typeText(texts[target]);
+  }
+
+  // Toggle password visibility
+  function togglePassword(id) {
+    const input = document.getElementById(id);
+    const icon = input.nextElementSibling;
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.remove('ri-eye-line');
+      icon.classList.add('ri-eye-off-line');
     } else {
-      setTimeout(() => {
-        // Setelah selesai ngetik, tunggu 2 detik
-        typedEl.textContent = ""; // hapus sekaligus
-        i = 0;
-        setTimeout(typeLoop, 3000); // jeda sebelum ulang
-      }, 6000);
+      input.type = "password";
+      icon.classList.remove('ri-eye-off-line');
+      icon.classList.add('ri-eye-line');
     }
   }
 
-  typeLoop();
+  // Optional: handle form submission here
+  document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Login submitted!');
+    // Add your login logic here
+  });
+
+  document.getElementById('registerForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Register submitted!');
+    // Add your register logic here
+  });
 </script>
 
 </body>
