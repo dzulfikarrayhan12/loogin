@@ -54,7 +54,7 @@
       background: rgba(40, 40, 55, 0.75);
       backdrop-filter: blur(1px);
       border-radius: 20px;
-      width: 470px;
+      width: 350px;
       padding: 40px 30px;
       box-shadow:
         0 10px 30px rgba(0,0,0,0.5),
@@ -170,7 +170,7 @@ h1 {
     .toggle-password {
       position: absolute;
       right: 10px;
-      top: 38%;
+      top: 32%;
       transform: translateY(-50%);
       cursor: pointer;
       user-select: none;
@@ -200,12 +200,12 @@ h1 {
     @media (max-width: 400px) {
       .login-container {
         width: 90vw;
-        padding: 15px 10px;
-        border-radius: 5px;
+        padding: 20px 15px;
+    
       }
 
       h1 {
-        font-size: 3rem;
+        font-size: 2rem;
       }
 
       input[type="text"],
@@ -255,15 +255,15 @@ h1 {
   display: flex;
   justify-content: center; /* posisikan ikon ke tengah */
   align-items: center;
-  gap: 29px; /* jarak antar ikon */
-  margin-top: 300px;
+  gap: 19px; /* jarak antar ikon */
+  margin-top: 12px;
 }
 
 
 .social-icons a {
   color: #eee;
-  margin: 0 15px;
-  font-size: 45px;
+  margin: 0 10px;
+  font-size: 40px;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -402,6 +402,12 @@ h1 {
     <img src="BG117.jpg" />
     <img src="BG118.jpg" />
     <img src="BG119.jpg" />
+    <img src="BG120.jpg" />
+    <img src="BG121.jpg" />
+    <img src="BG122.jpg" />
+    <img src="BG123.jpg" />
+    <img src="BG124.jpg" />
+    <img src="BG125.jpg" />
   </div>
 
   <div class="overlay"></div>
@@ -498,9 +504,9 @@ h1 {
           typedEl.textContent = "";
           i = 0;
           typeText(text); // loop ulang
-        }, 4500);
+        }, 3000);
       }
-    }, 95); // Kecepatan ketik
+    }, 100); // Kecepatan ketik
   }
 
   // Mulai pertama kali
