@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swipe Postingan dengan Like</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-gray-100 text-black">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 bg-white shadow-md flex items-center justify-center h-14 px-4 z-50">
+<div id="menu-btn" class="absolute left-4 text-2xl cursor-pointer"><i class="ri-menu-line"></i></div>
+
+    <div class="font-bold text-lg select-none">Dzulfikar</div>
+  </nav>
+
+  <div class="max-w-screen-md mx-auto py-6">
+    <h1 class="text-2xl font-bold text-center mb-4"></h1>
+
+    <div class="relative w-full">
+      <!-- Tombol scroll kiri kanan -->
+      <button onclick="document.querySelector('.scroll-post').scrollBy({left: -260, behavior: 'smooth'})"
+              class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white px-2 py-2 rounded-full">
+        <i class="ri-arrow-left-s-line text-xl"></i>
+      </button>
+      <button onclick="document.querySelector('.scroll-post').scrollBy({left: 260, behavior: 'smooth'})"
+              class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white px-2 py-2 rounded-full">
+        <i class="ri-arrow-right-s-line text-xl"></i>
+      </button>
+
+      <!-- Postingan scroll -->
+      <div class="scroll-post overflow-x-auto whitespace-nowrap px-4 scroll-smooth snap-x snap-mandatory scrollbar-hide">
+
+        <!-- Postingan -->
+        <div class="inline-block w-[250px] mr-4 snap-start bg-white rounded-xl shadow-md overflow-hidden" data-liked="false">
+          <img src="images/1.jpg" class="w-full h-80 object-contain" />
+          <div class="p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-gray-800">baju hitam</span>
+              <i class="ri-more-2-line text-gray-500"></i>
+            </div>
+            <p class="text-sm text-gray-700 mb-2"></p>
+            <div class="flex justify-between text-xl text-gray-600 items-center">
+              <div class="flex items-center space-x-1">
+                <i class="ri-heart-line cursor-pointer like-btn"></i>
+                <span class="text-sm text-gray-700 like-count">2349</span>
+              </div>
+              <i class="ri-chat-1-line hover:text-blue-400 cursor-pointer"></i>
+              <i class="ri-shopping-cart-line hover:text-green-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+
+
+
+               <div class="inline-block w-[250px] mr-4 snap-start bg-white rounded-xl shadow-md overflow-hidden" data-liked="false">
+          <img src="images/2.jpg" class="w-full h-80 object-contain" />
+          <div class="p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-gray-800">baju putih</span>
+              <i class="ri-more-2-line text-gray-500"></i>
+            </div>
+            <p class="text-sm text-gray-700 mb-2"></p>
+            <div class="flex justify-between text-xl text-gray-600 items-center">
+              <div class="flex items-center space-x-1">
+                <i class="ri-heart-line cursor-pointer like-btn"></i>
+                <span class="text-sm text-gray-700 like-count">2129</span>
+              </div>
+              <i class="ri-chat-1-line hover:text-blue-400 cursor-pointer"></i>
+              <i class="ri-shopping-cart-line hover:text-green-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+
+               <div class="inline-block w-[250px] mr-4 snap-start bg-white rounded-xl shadow-md overflow-hidden" data-liked="false">
+          <img src="images/3.jpg" class="w-full h-80 object-contain" />
+          <div class="p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-gray-800">baju merah</span>
+              <i class="ri-more-2-line text-gray-500"></i>
+            </div>
+            <p class="text-sm text-gray-700 mb-2"></p>
+            <div class="flex justify-between text-xl text-gray-600 items-center">
+              <div class="flex items-center space-x-1">
+                <i class="ri-heart-line cursor-pointer like-btn"></i>
+                <span class="text-sm text-gray-700 like-count">1129</span>
+              </div>
+              <i class="ri-chat-1-line hover:text-blue-400 cursor-pointer"></i>
+              <i class="ri-shopping-cart-line hover:text-green-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+
+               <div class="inline-block w-[250px] mr-4 snap-start bg-white rounded-xl shadow-md overflow-hidden" data-liked="false">
+          <img src="images/4.jpg" class="w-full h-80 object-cover" />
+          <div class="p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-gray-800">hoodie hitam</span>
+              <i class="ri-more-2-line text-gray-500"></i>
+            </div>
+            <p class="text-sm text-gray-700 mb-2"></p>
+            <div class="flex justify-between text-xl text-gray-600 items-center">
+              <div class="flex items-center space-x-1">
+                <i class="ri-heart-line cursor-pointer like-btn"></i>
+                <span class="text-sm text-gray-700 like-count">2399</span>
+              </div>
+              <i class="ri-chat-1-line hover:text-blue-400 cursor-pointer"></i>
+              <i class="ri-shopping-cart-line hover:text-green-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+
+               <div class="inline-block w-[250px] mr-4 snap-start bg-white rounded-xl shadow-md overflow-hidden" data-liked="false">
+          <img src="images/5.jpg" class="w-full h-80 object-cover" />
+          <div class="p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-gray-800">hoodie merah</span>
+              <i class="ri-more-2-line text-gray-500"></i>
+            </div>
+            <p class="text-sm text-gray-700 mb-2"></p>
+            <div class="flex justify-between text-xl text-gray-600 items-center">
+              <div class="flex items-center space-x-1">
+                <i class="ri-heart-line cursor-pointer like-btn"></i>
+                <span class="text-sm text-gray-700 like-count">1299</span>
+              </div>
+              <i class="ri-chat-1-line hover:text-blue-400 cursor-pointer"></i>
+              <i class="ri-shopping-cart-line hover:text-green-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+
+                 <div class="inline-block w-[250px] mr-4 snap-start bg-white rounded-xl shadow-md overflow-hidden" data-liked="false">
+          <img src="images/6.jpg" class="w-full h-80 object-cover" />
+          <div class="p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-gray-800">hoodie putih</span>
+              <i class="ri-more-2-line text-gray-500"></i>
+            </div>
+            <p class="text-sm text-gray-700 mb-2"></p>
+            <div class="flex justify-between text-xl text-gray-600 items-center">
+              <div class="flex items-center space-x-1">
+                <i class="ri-heart-line cursor-pointer like-btn"></i>
+                <span class="text-sm text-gray-700 like-count">2139</span>
+              </div>
+              <i class="ri-chat-1-line hover:text-blue-400 cursor-pointer"></i>
+              <i class="ri-shopping-cart-line hover:text-green-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+
+                 <div class="inline-block w-[250px] mr-4 snap-start bg-white rounded-xl shadow-md overflow-hidden" data-liked="false">
+          <img src="images/7.jpg" class="w-full h-80 object-cover" />
+          <div class="p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-gray-800">hoodie hijau</span>
+              <i class="ri-more-2-line text-gray-500"></i>
+            </div>
+            <p class="text-sm text-gray-700 mb-2"></p>
+            <div class="flex justify-between text-xl text-gray-600 items-center">
+              <div class="flex items-center space-x-1">
+                <i class="ri-heart-line cursor-pointer like-btn"></i>
+                <span class="text-sm text-gray-700 like-count">2349</span>
+              </div>
+              <i class="ri-chat-1-line hover:text-blue-400 cursor-pointer"></i>
+              <i class="ri-shopping-cart-line hover:text-green-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+
+           
+        <!-- Duplikat postingan lainnya bisa disalin di sini -->
+
+      </div>
+    </div>
+  </div>
+
+<!-- Sidebar Fullscreen -->
+<div id="sidebar" class="fixed top-0 left-0 w-full h-full bg-black/10 backdrop-blur-md z-[999] transform -translate-x-full transition-transform duration-300 ease-in-out">
+  <!-- Header -->
+  <div class="relative border-b border-white/40 py-4">
+    <h2 class="text-xl font-bold text-center text-white drop-shadow">dzulfikar</h2>
+    <button id="close-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-2xl text-white hover:text-white/80">
+      <i class="ri-close-line"></i>
+    </button>
+  </div>
+
+  <!-- Menu content right below MENU -->
+  <div class="flex flex-col items-center pt-10">
+    <ul class="space-y-6 text-lg text-center">
+      <li>
+        <a href="index.html" class="flex items-center space-x-2 text-white hover:text-white/80">
+          <i class="ri-home-4-line text-2xl"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="ai.html" class="flex items-center space-x-2 text-white hover:text-white/80">
+          <i class="ri-shopping-cart-2-fill text-2xl"></i>
+          <span>Produk</span>
+        </a>
+      </li>
+   
+      <li>
+        <a href="kontak.html" class="flex items-center space-x-2 text-white hover:text-white/80">
+          <i class="ri-phone-fill text-2xl"></i>
+          <span>Kontak</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black/70 z-[998] hidden transition-opacity duration-300 ease-in-out"></div>
+
+  <!-- Script -->
+  <script>
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const post = btn.closest('[data-liked]');
+        const liked = post.getAttribute('data-liked') === 'true';
+        const countSpan = post.querySelector('.like-count');
+        let count = parseInt(countSpan.innerText);
+
+        if (!liked) {
+          post.setAttribute('data-liked', 'true');
+          btn.classList.remove('ri-heart-line');
+          btn.classList.add('ri-heart-fill', 'text-red-500');
+          count++;
+        } else {
+          post.setAttribute('data-liked', 'false');
+          btn.classList.remove('ri-heart-fill', 'text-red-500');
+          btn.classList.add('ri-heart-line');
+          count--;
+        }
+
+        countSpan.innerText = count;
+      });
+    });
+
+      // Sidebar menu
+     const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-btn');
+
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.remove('-translate-x-full');
+    overlay.classList.remove('hidden');
+    overlay.classList.add('opacity-100');
+  });
+
+  function closeSidebar() {
+    sidebar.classList.add('-translate-x-full');
+    overlay.classList.add('hidden');
+    overlay.classList.remove('opacity-100');
+  }
+
+  overlay.addEventListener('click', closeSidebar);
+  closeBtn.addEventListener('click', closeSidebar);
+  </script>
+</body>
+</html>
