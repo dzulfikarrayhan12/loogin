@@ -1,0 +1,61 @@
+/* Animasi buka tutup sidebar */
+#leftSidebar,
+#cartSidebar {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Overlay blur saat sidebar terbuka */
+#overlay.show {
+  backdrop-filter: blur(4px);
+}
+
+/* Tambahan hover & focus efek */
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5);
+}
+
+/* Kustom scrollbar keranjang */
+#cartSidebar::-webkit-scrollbar {
+  width: 8px;
+}
+#cartSidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+#cartSidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Animasi tombol menu */
+#menuBtn {
+  transition: transform 0.3s ease;
+}
+
+
+.cart-item-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+
+.cart-item-price {
+  font-size: 13px;
+  color: #000;
+}
+
+.cart-item-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color:#000;
+}
+
+.cart-item-size {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #f9f9f9;
+}
