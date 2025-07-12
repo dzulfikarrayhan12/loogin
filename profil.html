@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Pengguna</title>
+
+  <!-- Remix Icon CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Google Font: Cinzel (untuk logo saja) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000 #fff;
+      color: #fff;
+      padding: 15px 20px;
+      position: relative;
+    }
+
+    .navbar .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .navbar .logo {
+      font-family: 'Cinzel', serif;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Sidebar (Fullscreen From Top) */
+    .sidebar {
+      height: 0;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      overflow-y: hidden;
+      transition: 0.4s;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      height: 100%;
+    }
+
+    .sidebar-content {
+      padding-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar-content a {
+      padding: 15px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .sidebar-content a:hover {
+      background-color: #1b4f72;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Profile Box (Glassmorphism) */
+    .profile-box {
+      background: rgba(0, 0, 0, 0.);
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(3px);
+      border-radius: 15px;
+      box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+      width: 90%;
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 25px;
+      text-align: center;
+      
+    }
+
+    .profile-icon {
+      font-size: 60px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .profile-info h2 {
+      margin: 10px 0 5px;
+      color: #fff;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      color: #fff;
+    }
+
+    .logout-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .logout-button i {
+      font-size: 20px;
+    }
+
+    .logout-button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar (Top Fullscreen) -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="toggleSidebar()">&times;</span>
+<div class="sidebar-content space-y-4 text-white text-lg">
+  <a href="rayhan.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
+    <i class="ri-home-line"></i> Home
+  </a>
+  <a href="ai.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
+    <i class="ri-shopping-cart-2-fill"></i> Produk
+  </a>
+  <a href="transaksi.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
+    <i class="ri-history-line"></i> Riwayat
+  </a>
+  <a href="kontak.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
+    <i class="ri-phone-line"></i> Kontak
+  </a>
+  <a href="#" class="flex items-center gap-2 hover:text-red-400 transition-all">
+    <i class="ri-logout-box-r-line"></i> Keluar
+  </a>
+</div>
+
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <i class="ri-menu-line menu-icon" onclick="toggleSidebar()"></i>
+    <div class="logo">Profile</div>
+  </div>
+
+  <!-- Profile Box -->
+  <div class="profile-box">
+    <div class="profile-icon">
+      <i class="ri-user-3-line"></i>
+    </div>
+    <div class="profile-info">
+      <h2>Rayhan Ray</h2>
+      <p>
+  Email:rayhanray321@gmail.com</p>
+      <p>Nomor HP: 0821-9777-0219</p>
+      <p>Status: Aktif</p>
+    </div>
+
+    <!-- Tombol Logout -->
+    <button class="logout-button">
+      <i class="ri-logout-box-r-line"></i> Keluar
+    </button>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("mySidebar");
+      sidebar.classList.toggle("open");
+    }
+  </script>
+
+</body>
+</html>
