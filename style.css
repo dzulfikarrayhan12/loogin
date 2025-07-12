@@ -1,0 +1,458 @@
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #fff;
+  }
+
+    .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+
+nav {
+  background-color: rgba(0, 0, 0, 0.25); /* hitam semi transparan */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25); /* garis putih kaca tipis */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  color: white; /* teks dan ikon putih supaya kontras */
+}
+
+/* Transaksi */
+.transaksi {
+  
+  background: #111;
+}
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 40px 0;
+  white-space: nowrap;
+}
+
+.tag-list img {
+  height: 90px;  /* ubah sesuai keinginan: 30px, 60px, dll */
+  width: auto;   /* biarkan proporsional */
+}
+.tag-list li {
+  flex-shrink: 0;        /* mencegah menyusut saat overflow */
+  width: 80px;           /* atur lebar tetap */
+  height: 60px;          /* atur tinggi tetap */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* Pastikan elemen yang di-scroll adalah container, bukan listnya langsung */
+.scroll-container { /* Anda perlu menambahkan div ini di HTML Anda */
+    overflow-x: visible; /* Sembunyikan scrollbar */
+    width: 100%;
+}
+
+.tag-list.scroll-right {
+  animation: scroll-right 15s linear infinite;
+}
+
+.tag-list.scroll-left {
+  animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-100%); } /* Mulai dari posisi normal */
+  100% { transform: translateX(100%); } /* Geser ke kiri sampai akhir list */
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+  .header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* agar checkout di kiri */
+  padding: 0.5rem 1rem;
+  background-color: #fff; /* sesuaikan dengan tema */
+  height: 50px;
+  box-sizing: border-box;
+}
+
+/* Checkout di kiri */
+.checkout-glow-white-to-yellow {
+  font-weight: bold;
+  font-size: 35px;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+   font-family: "Creepster", system-ui;
+  display: inline-block;
+  white-space: nowrap;
+   flex: 1; /* agar "CHECKOUT" menempel kiri */
+
+}
+
+/* Logo di tengah dengan posisi absolute */
+.logo {
+  font-weight: bold;
+  font-size: 12px;
+  color: #FF3B3B; /* merah terang agak soft */
+  padding: 0.5px 1px;
+  border-radius: 1px;
+  font-family: "Cinzel", serif;
+  position: absolute;
+  left: 67%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+
+}
+
+
+/* Tombol close di kanan */
+
+
+/* Styling judul */
+
+#pay-btn {
+  background-color: #22c55e; /* Tailwind bg-green-500 */
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;     /* Tailwind py-2 px-6 */
+  border-radius: 0.375rem;    /* Tailwind rounded-md */
+  width: 100%;
+  margin-bottom: 3.5rem;      /* Tailwind mb-14 */
+  border: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#pay-btn:hover {
+  background-color: #16a34a; /* Tailwind hover:bg-green-600 */
+}
+
+
+.ray-text, .han-text {
+  font-family: "Cinzel", serif;
+  font-size: 24px; /* Lebih besar agar lebih jelas */
+
+  background: linear-gradient(
+    90deg,
+    #160,   /* kuning keemasan */
+    #60a5fa,   /* hijau mint segar */
+    #60a5fa    /* hijau gelap kontras */
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+
+  -webkit-text-stroke: 0.7px #1f2937; /* stroke gelap, bukan putih */
+
+  text-shadow:
+    1px 1px 2px rgba(0,0,0,0.3),
+    0 0 5px rgba(255,255,255,0.2);
+
+  filter: none; /* drop-shadow dihapus untuk kejernihan */
+}
+
+ 
+#han-part {
+  transition: opacity 0.4s ease;
+}
+
+#han-part.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+ 
+#userBtn i {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.ri-shopping-cart-line {
+  color: #000;
+}
+
+.ri-menu-line{
+  color: #000;
+}
+
+
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #8B0000,
+      0 0 10px #FF0000,
+      0 0 20px #FF0000,
+      0 0 30px #FF4D4D,
+      0 0 40px #FF4D4D,
+      0 0 55px #FF6666,
+      0 0 75px #FF6666;
+    opacity: 1;
+  }
+
+  40% {
+    text-shadow:
+      0 0 3px #8B0000,
+      0 0 6px #FF0000,
+      0 0 12px #FF0000,
+      0 0 18px #FF4D4D,
+      0 0 24px #FF4D4D;
+    opacity: 0.8;
+  }
+
+  60% {
+    opacity: 0.2; /* seolah-olah kedip mati */
+    text-shadow: none;
+  }
+
+  80% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #8B0000,
+      0 0 10px #FF0000,
+      0 0 20px #FF0000,
+      0 0 30px #FF4D4D,
+      0 0 40px #FF4D4D,
+      0 0 55px #FF6666,
+      0 0 75px #FF6666;
+  }
+}
+
+.custom-color {
+  color: #8B0000;
+  animation: neon-flicker 2s infinite ease-in-out;
+}
+
+
+  #cart-count {
+    display: none;
+  }
+
+  .glow-super-bright {
+    color: #ffffff;
+    text-shadow:
+      0 0 8px #ffffff,
+      0 0 16px #ffffff,
+      0 0 24px #ffffff,
+      0 0 32px #ffffff,
+      0 0 40px #ffffff,
+      0 0 50px #ffffff;
+  }
+
+  .input-white-glow {
+    color: #f5f5f5; /* putih susu */
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6);
+  }
+
+  .input-container {
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    .input-container {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+  }
+
+  #loginModal {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  input:focus {
+    border-color: #60a5fa;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+ 
+  #submitBtn {
+  background-color: #229ED9; /* biru terang (Tailwind bg-blue-400) */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+#closeModalBtn {
+  background-color: #8B0000; /* Merah Netflix */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 29px;
+  margin-top: 15px;
+}
+
+
+/* Warna default untuk semua link sosial media */
+.social-icons a {
+  color: #eee;
+  margin: 0 15px;
+  font-size: 45px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Warna khusus per media sosial */
+.social-icons a.facebook {
+  background: transparent;       /* background transparan */
+  width: 50px;
+  height: 50px;
+  border-radius: 5%;             /* sudut agak membulat */
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+
+  color: white;                  /* warna icon putih */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;               /* ukuran icon */
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+
+.social-icons a.instagram {
+  background: transparent;       /* background transparan */
+  width: 50px;
+  height: 50px;
+  border-radius: 5%;             /* sudut agak membulat */
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+
+  color: white;                  /* warna icon putih */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;               /* ukuran icon */
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+
+.social-icons a.whatsapp {
+  background: transparent;       /* background transparan */
+  width: 50px;
+  height: 50px;
+  border-radius: 5%;             /* sudut agak membulat */
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+
+  color: white;                  /* warna icon putih */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;               /* ukuran icon */
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+/* Hover masing-masing */
+.social-icons a.facebook:hover {
+  color: #145dbf; /* Biru gelap */
+}
+.social-icons a.instagram:hover {
+  color: #b2124a; /* Pink gelap */
+}
+.social-icons a.whatsapp:hover {
+  color: #1ebe56; /* Hijau gelap */
+}
+
+
+#form-title {
+   font-family: "Cinzel", serif;
+   color: #fff; 
+}
+
+#cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+  color: #fff; /* bisa diganti sesuai tema */
+  font-weight: bold;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+.btn-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-color: #FF3B3B;/* merah yang serasi */
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px; /* bukan lingkaran, tapi sedikit rounded */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 36px;
+  height: 36px;
+  color:#FF3B3B; /* ikon tetap putih */
+  font-size: 41px;
+  border: none; /* hilangkan border default (kalau ada) */
+}
+
+.btn-close::before {
+  content: "";
+  position: absolute;
+  inset: 4px;             /* jarak dari semua sisi */
+  border-radius: 4px;     /* sudut kotak sedikit membulat */
+  border: 2px solid white;
+  pointer-events: none;
+}
+
+.btn-close i {
+  color: white; /* icon putih */
+}
