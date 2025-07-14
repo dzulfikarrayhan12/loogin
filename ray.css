@@ -161,6 +161,38 @@ nav.navbar #cart-toggle {
   pointer-events: all;
 }
 
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar-menu.active {
+  left: 0;
+}
+
+.black-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+  z-index: 9998;
+  display: none;
+}
+
+.black-overlay.active {
+  display: block;
+}
+
+
 /* Product Grid */
 .product-grid {
   display: grid;
@@ -292,7 +324,7 @@ nav.navbar #cart-toggle {
 .cart-item-name {
   font-size: 14px;
   font-weight: bold;
-  color: #000;
+  color: #f9f9f9;
 }
 
 .cart-item-price {
@@ -306,7 +338,7 @@ nav.navbar #cart-toggle {
   flex-direction: column;
   font-weight: 600;
   font-size: 0.9rem;
-  color:#000;
+  color:#f9f9f9;
 }
 
 .cart-item-size {
@@ -452,3 +484,230 @@ nav.navbar #cart-toggle {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+#sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 50;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebar-menu.show {
+  display: flex;
+}
+
+.sidebar-nav a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  margin: 1rem 0;
+  text-decoration: none;
+}
+
+ .input-container {
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    .input-container {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+  }
+
+  #loginModal {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  input:focus {
+    border-color: #60a5fa;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+ 
+  #submitBtn {
+  background-color: #229ED9; /* biru terang (Tailwind bg-blue-400) */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+#closeModalBtn {
+  background-color: #8B0000; /* Merah Netflix */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 29px;
+  margin-top: 15px;
+}
+
+
+/* Warna default untuk semua link sosial media */
+.social-icons a {
+  color: #eee;
+  margin: 0 15px;
+  font-size: 45px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Warna khusus per media sosial */
+.social-icons a.facebook {
+  background: transparent;       /* background transparan */
+  width: 50px;
+  height: 50px;
+  border-radius: 5%;             /* sudut agak membulat */
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+
+  color: white;                  /* warna icon putih */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;               /* ukuran icon */
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+
+.social-icons a.instagram {
+  background: transparent;       /* background transparan */
+  width: 50px;
+  height: 50px;
+  border-radius: 5%;             /* sudut agak membulat */
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+
+  color: white;                  /* warna icon putih */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;               /* ukuran icon */
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+
+.social-icons a.whatsapp {
+  background: transparent;       /* background transparan */
+  width: 50px;
+  height: 50px;
+  border-radius: 5%;             /* sudut agak membulat */
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+
+  color: white;                  /* warna icon putih */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;               /* ukuran icon */
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+/* Hover masing-masing */
+.social-icons a.facebook:hover {
+  color: #145dbf; /* Biru gelap */
+}
+.social-icons a.instagram:hover {
+  color: #b2124a; /* Pink gelap */
+}
+.social-icons a.whatsapp:hover {
+  color: #1ebe56; /* Hijau gelap */
+}
+
+
+#form-title {
+   font-family: "Cinzel", serif;
+   color: #fff; 
+}
+
+#cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+  color: #fff; /* bisa diganti sesuai tema */
+  font-weight: bold;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+.btn-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-color: #FF3B3B;/* merah yang serasi */
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px; /* bukan lingkaran, tapi sedikit rounded */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 36px;
+  height: 36px;
+  color:#FF3B3B; /* ikon tetap putih */
+  font-size: 41px;
+  border: none; /* hilangkan border default (kalau ada) */
+}
+
+.btn-close::before {
+  content: "";
+  position: absolute;
+  inset: 4px;             /* jarak dari semua sisi */
+  border-radius: 4px;     /* sudut kotak sedikit membulat */
+  border: 2px solid white;
+  pointer-events: none;
+}
+
+.btn-close i {
+  color: white; /* icon putih */
+}
+
+
