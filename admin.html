@@ -18,9 +18,7 @@
    <button id="menuBtn" class="text-3xl text-white hover:text-gray-300 hover:scale-110 transition">
      <i class="ri-home-4-line"></i>
    </button>
-    <button id="userBtn" class="text-3xl  hover:text-gray-300 hover:scale-110 transition">
-      <i class="ri-user-line"></i>
-    </button>
+
   </div>
   <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-xl font-bold font-cinzel">D Z U L F I K A R</div>
 </nav>
@@ -32,9 +30,9 @@
     <button id="closeSidebar" class="text-2xl hover:text-gray-400">&times;</button>
   </div>
   <ul class="p-4 space-y-4 font-cinzel text-lg">
-    <li><a href="rayhan.html" class="flex items-center gap-2"><i class="ri-home-4-fill"></i>HOME</a></li>
-    <li><a href="kontak.html" class="flex items-center gap-2"><i class="ri-phone-fill"></i>KONTAK</a></li>
-    <li><a href="profil.html" class="flex items-center gap-2"><i class="ri-user-fill"></i>PROFIL</a></li>
+    <li><a href="index.html" class="flex items-center gap-2"><i class="ri-home-4-fill"></i>HOME</a></li>
+    <li><a href="kontak.html" class="flex items-center gap-2"><i class="ri-phone-fill"></i>user</a></li>
+    <li><a href="profil.html" class="flex items-center gap-2"><i class="ri-user-fill"></i>produk</a></li>
     <li><a href="ai.html" class="flex items-center gap-2"><i class="ri-shopping-bag-2-fill"></i>PRODUK</a></li>
     <li><a href="weed.html" class="flex items-center gap-2"><i class="ri-heart-3-fill"></i>BARU</a></li>
   </ul>
@@ -122,21 +120,22 @@
   });
 
   // Simulasi data dashboard
-  document.addEventListener('DOMContentLoaded', () => {
-    const totalProduk = 7;
-    const totalUser = 5;
-    const totalPesanan = 10;
-    const totalCOD = 3;
-    const totalBelumBayar = 3;
-    const totalSelesai = 5;
+  document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/dashboard');
+    const data = await res.json();
 
-    document.getElementById('total-produk').textContent = totalProduk;
-    document.getElementById('total-user').textContent = totalUser;
-    document.getElementById('total-pesanan').textContent = totalPesanan;
-    document.getElementById('total-cod').textContent = totalCOD;
-    document.getElementById('total-belumbayar').textContent = totalBelumBayar;
-    document.getElementById('total-selesai').textContent = totalSelesai;
-  });
+    document.getElementById('total-produk').textContent = data.totalProduk;
+    document.getElementById('total-user').textContent = data.totalUser;
+    document.getElementById('total-pesanan').textContent = data.totalPesanan;
+    document.getElementById('total-cod').textContent = data.totalCOD;
+    document.getElementById('total-belumbayar').textContent = data.totalBelumBayar;
+    document.getElementById('total-selesai').textContent = data.totalSelesai;
+  } catch (error) {
+    console.error('Gagal mengambil data dashboard:', error);
+  }
+});
+
 </script>
 
 </body>
