@@ -7,32 +7,26 @@
 
   <!-- Remix Icon CDN -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-
-  <!-- Google Font: Cinzel (untuk logo saja) -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('images/bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
     }
 
-    body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-image: url('images/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #000 #fff;
+      background-color: #000;
       color: #fff;
       padding: 15px 20px;
       position: relative;
@@ -52,7 +46,6 @@
       font-weight: bold;
     }
 
-    /* Sidebar (Fullscreen From Top) */
     .sidebar {
       height: 0;
       width: 100%;
@@ -65,9 +58,7 @@
       z-index: 1000;
     }
 
-    .sidebar.open {
-      height: 100%;
-    }
+    .sidebar.open { height: 100%; }
 
     .sidebar-content {
       padding-top: 60px;
@@ -99,19 +90,16 @@
       cursor: pointer;
     }
 
-    /* Profile Box (Glassmorphism) */
     .profile-box {
-      background: rgba(0, 0, 0, 0.);
+      background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(9px);
-      -webkit-backdrop-filter: blur(3px);
       border-radius: 15px;
-      box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       width: 90%;
       max-width: 400px;
       margin: 40px auto;
       padding: 25px;
       text-align: center;
-      
     }
 
     .profile-icon {
@@ -146,38 +134,27 @@
       cursor: pointer;
     }
 
-    .logout-button i {
-      font-size: 20px;
-    }
-
     .logout-button:hover {
       background-color: #c0392b;
+    }
+
+    .logout-button i {
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar (Top Fullscreen) -->
+  <!-- Sidebar -->
   <div id="mySidebar" class="sidebar">
     <span class="closebtn" onclick="toggleSidebar()">&times;</span>
-<div class="sidebar-content space-y-4 text-white text-lg">
-  <a href="rayhan.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
-    <i class="ri-home-line"></i> Home
-  </a>
-  <a href="ai.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
-    <i class="ri-shopping-cart-2-fill"></i> Produk
-  </a>
-  <a href="transaksi.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
-    <i class="ri-history-line"></i> Riwayat
-  </a>
-  <a href="kontak.html" class="flex items-center gap-2 hover:text-blue-400 transition-all">
-    <i class="ri-phone-line"></i> Kontak
-  </a>
-  <a href="#" class="flex items-center gap-2 hover:text-red-400 transition-all">
-    <i class="ri-logout-box-r-line"></i> Keluar
-  </a>
-</div>
-
+    <div class="sidebar-content">
+      <a href="rayhan.html"><i class="ri-home-line"></i> Home</a>
+      <a href="ai.html"><i class="ri-shopping-cart-2-fill"></i> Produk</a>
+      <a href="transaksi.html"><i class="ri-history-line"></i> Riwayat</a>
+      <a href="kontak.html"><i class="ri-phone-line"></i> Kontak</a>
+      <a href="#" class="logout-button logout-link"><i class="ri-logout-box-r-line"></i> Keluar</a>
+    </div>
   </div>
 
   <!-- Navbar -->
@@ -192,25 +169,42 @@
       <i class="ri-user-3-line"></i>
     </div>
     <div class="profile-info">
-      <h2>Rayhan Ray</h2>
-      <p>
-  Email:rayhanray321@gmail.com</p>
-      <p>Nomor HP: 0821-9777-0219</p>
+      <h2 id="user-name">Loading...</h2>
+      <p id="user-email">Email: </p>
+      <p id="user-phone">Nomor HP: </p>
       <p>Status: Aktif</p>
     </div>
 
-    <!-- Tombol Logout -->
-    <button class="logout-button">
+    <button class="logout-button logout-link">
       <i class="ri-logout-box-r-line"></i> Keluar
     </button>
   </div>
 
-  <!-- JavaScript -->
   <script>
+    // Sidebar Toggle
     function toggleSidebar() {
-      const sidebar = document.getElementById("mySidebar");
-      sidebar.classList.toggle("open");
+      document.getElementById("mySidebar").classList.toggle("open");
     }
+
+    // Ambil data user dari sessionStorage
+    const user = JSON.parse(sessionStorage.getItem('user'));
+
+    if (!user) {
+      alert("Silakan login terlebih dahulu.");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById('user-name').textContent = user.username || "-";
+      document.getElementById('user-email').textContent = "Email: " + (user.email || "-");
+      document.getElementById('user-phone').textContent = "Nomor HP: " + (user.phone || "-");
+    }
+
+    // Logout semua tombol dengan class logout-link
+    document.querySelectorAll('.logout-link').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sessionStorage.removeItem('user');
+        window.location.href = "index.html";
+      });
+    });
   </script>
 
 </body>
