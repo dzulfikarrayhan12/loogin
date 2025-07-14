@@ -3,41 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KIRA Store - Final </title>
+  <title>KIRA Store - Final</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Remix Icon -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="ray.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="ray.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
- <nav class="navbar flex items-center justify-between px-4 py-2 bg-black text-white relative">
-  <!-- Menu kiri -->
+<body class="bg-white text-black">
+
+<!-- Navbar -->
+<nav class="navbar flex items-center justify-between px-4 py-2 bg-black text-white relative">
   <div class="flex items-center space-x-4">
     <button id="menu-toggle" aria-label="Toggle menu">
       <i class="ri-menu-line text-2xl"></i>
     </button>
   </div>
 
-  <!-- Logo tengah -->
-  <div id="navbarlogo" class="absolute left-1/2 transform -translate-x-1/2"
-       style="
-         background: linear-gradient(to bottom, #fff, #2b27);
-         -webkit-background-clip: text;
-         color: transparent;
-         font-weight: 900;
-         font-size: 1.25rem;
-       ">
-    DZULFIKAR
+  <div id="navbarlogo" class="absolute left-1/2 transform -translate-x-1/2" style="background: linear-gradient(to bottom, #fff, #2b27); -webkit-background-clip: text; color: transparent; font-weight: 900; font-size: 1.25rem;">
+    dzULFIKAR
   </div>
 
-  <!-- Icon User dan Cart kanan -->
   <div class="flex items-center space-x-4">
     <button id="userBtn" class="text-2xl hover:text-gray-300 transition" aria-label="User account">
       <i class="ri-user-line"></i>
     </button>
-
     <button id="cart-toggle" aria-label="Toggle cart" class="relative text-2xl">
       <i class="ri-shopping-bag-3-line"></i>
       <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">0</span>
@@ -45,111 +36,196 @@
   </div>
 </nav>
 
-
-  <!-- Sidebar Menu -->
- 
-<!-- Overlay -->
-<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
-
-<!-- Sidebar Menu Fullscreen dengan blur -->
-<!-- Overlay -->
-
-<!-- Sidebar Fullscreen -->
+<!-- Sidebar Menu -->
 <aside id="sidebar-menu" style="position:fixed; inset:0; z-index:9999; display:none; background-color:#000; backdrop-filter:blur(10px); display:flex; flex-direction:column; justify-content:center; align-items:center;">
-  <button id="menu-close" style="position:absolute; top:1rem; right:1.5rem; font-size:2rem; color:white; background:none; border:none;">
-    &times;
-  </button>
+  <button id="menu-close" style="position:absolute; top:1rem; right:1.5rem; font-size:2rem; color:white; background:none; border:none;">&times;</button>
   <nav style="text-align:center;">
     <a href="profil.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">profil</a>
-    <a href="transaksi.html" id="loginBtn" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">riwayat</a>
+    <a href="transaksi.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">riwayat</a>
     <a href="kontak.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">kontak</a>
+      <a href="admin.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">admin</a>
   </nav>
 </aside>
 
-  <!-- Sidebar Cart -->
- <aside class="sidebar-cart" id="sidebar-cart">
+<!-- Sidebar Cart -->
+<aside class="sidebar-cart" id="sidebar-cart">
   <div class="cart-summary">Keranjang Kamu</div>
-
   <div class="cart-items" id="cart-items"></div>
-
-  <!-- Keterangan total -->
-  <!-- Total belanja -->
-<div class="cart-total-row">
-  <span class="cart-total-label">Total Belanja:</span>
-  <span class="cart-total" id="cart-total">Rp0</span>
-</div>
-
-<!-- Tombol checkout -->
-<button class="checkout-btn" id="checkout-btn">
-  <i class="ri-shopping-bag-line" style="margin-right: 6px;"></i> Checkout
-</button>
-
+  <div class="cart-total-row">
+    <span class="cart-total-label">Total Belanja:</span>
+    <span class="cart-total" id="cart-total">Rp0</span>
+  </div>
+  <button class="checkout-btn" id="checkout-btn">
+    <i class="ri-shopping-bag-line me-2"></i> Checkout
+  </button>
 </aside>
 
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
 
-
-
-  <!-- Overlay -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- Main Content -->
-  <main>
-    <!-- Welcome Section -->
-   <section class="banner-section" style="text-align:center; padding: 6rem 2rem; color: white;">
+<!-- Banner -->
+<section class="banner-section text-center text-white py-24 px-4 bg-black">
   <h5>Selamat Datang di</h5>
-  <h1 style="font-weight: 800; font-size: 3rem; margin: 0.5rem 0;">DZULFIKAR</h1>
-  <p></p>
-</section>
-    <!-- Products -->
-   <section class="product-grid" id="product">
-  <!-- semua .product-card di sini dihapus -->
+  <h1 class="text-4xl font-extrabold my-2">DZULFIKAR</h1>
 </section>
 
+<!-- Produk -->
+<section class="product-grid" id="product" style="padding: 2rem;">
+  <!-- produk akan dimuat lewat JS -->
+</section>
 
-    <!-- Transaksi Section -->
-    <section id="transaksi" style="padding: 1rem; max-width: 1200px; margin: auto; text-align: center;">
-      <h2>TRANSAKSI</h2>
-      <p>Metode pembayaran </p>
-      <!-- Bisa ditambahkan carousel gambar pembayaran di sini -->
-       <div class="payment-carousel">
-  <div class="carousel-track">
-    <img src="images/dana.jpeg" alt="Dana" />
-    <img src="images/gopay.jpeg" alt="Gopay" />
-    <img src="images/bni.jpeg" alt="BNI" />
-    <img src="images/bri.jpeg" alt="BRI" />
-    <!-- Duplikat agar loop terlihat halus -->
-    <img src="images/dana.jpeg" alt="Dana" />
-    <img src="images/gopay.jpeg" alt="Gopay" />
-     <img src="images/bni.jpeg" alt="BNI" />
-    <img src="images/bri.jpeg" alt="BRI" />
-    <!-- Duplikat agar loop terlihat halus -->
-    <img src="images/dana.jpeg" alt="Dana" />
-    <img src="images/gopay.jpeg" alt="Gopay" />
-     <img src="images/bni.jpeg" alt="BNI" />
-    <img src="images/bri.jpeg" alt="BRI" />
+<!-- Transaksi -->
+<section id="transaksi" class="text-center p-4 max-w-screen-lg mx-auto">
+  <h2>TRANSAKSI</h2>
+  <p>Metode pembayaran:</p>
+  <div class="payment-carousel flex overflow-x-auto gap-4 py-4">
+    <img src="images/dana.jpeg" alt="Dana" class="h-12" />
+    <img src="images/gopay.jpeg" alt="Gopay" class="h-12" />
+    <img src="images/bni.jpeg" alt="BNI" class="h-12" />
+    <img src="images/bri.jpeg" alt="BRI" class="h-12" />
+  </div>
+</section>
+
+<!-- Tentang Kami -->
+<section id="about" class="text-center p-4 max-w-screen-lg mx-auto">
+  <h2>TENTANG KAMI</h2>
+  <p>Toko online terpercaya dan aman.</p>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-black text-white mt-6">
+  &copy; 2025 DZULFIKAR, Inc.
+</footer>
+
+<!-- ============================== -->
+<!-- MODAL LOGIN -->
+<!-- MODAL LOGIN/REGISTER -->
+<div id="loginModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm z-50">
+  <div class="bg-black bg-opacity-10 backdrop-blur-lg border border-black/90 ring-1 ring-black/90 rounded-3xl p-8 w-10px max-w-md shadow-4xl text-white font-sans">
+    
+<h2 id="form-title" class="text-3xl font-semibold mb-6 text-center text-red-600">DZULFIKAR</h2>
+
+    <p class="subtitle text-center mb-6">
+      <span id="typed"></span><span id="cursor">|</span>
+    </p>
+
+    <!-- FORM LOGIN -->
+    <form id="loginForm" class="active space-y-4" autocomplete="off" novalidate>
+      <div class="relative mb-8">
+        <i class="ri-user-line absolute left-4 top-1/2 -translate-y-1/2 text-white/60"></i>
+        <input type="text" name="username" placeholder="Username" class="pl-10 pr-4 py-3 w-full bg-black bg-opacity-20 border border-white/30 rounded-xl text-white placeholder-white/60" required />
+      </div>
+      <div class="relative">
+        <i class="ri-lock-password-line absolute left-4 top-1/2 -translate-y-1/2 text-white/60"></i>
+        <input type="password" id="loginPassword" name="password" placeholder="Password" class="pl-10 pr-10 py-3 w-full bg-black bg-opacity-20 border border-white/30 rounded-xl text-white placeholder-white/60" required />
+        <i class="ri-eye-line absolute right-4 top-1/2 -translate-y-1/2 text-white/60 cursor-pointer" onclick="togglePassword('loginPassword')"></i>
+      </div>
+    <button type="submit" class="w-full py-3 bg-blue-500 rounded-xl hover:bg-blue-600 transition flex items-center justify-center gap-2">
+  <i class="ri-shopping-bag-4-fill"></i>
+  MASUK
+</button>
+
+
+  <button
+    type="button"
+    id="switchToRegisterBtn"
+    class="mt-2 w-full text-sm text-center text-blue-400 hover:text-blue-600 underline"
+  >
+    Daftar
+  </button>
+
+
+    </form>
+
+    <!-- FORM REGISTER -->
+ <!-- FORM REGISTER -->
+<form id="registerForm" class="hidden" autocomplete="off" novalidate>
+  <div class="relative mb-4">
+    <i class="ri-user-line absolute left-4 top-1/2 -translate-y-1/2 text-white/60"></i>
+    <input type="text" name="username" placeholder="Username" class="pl-10 pr-4 py-3 w-full bg-black bg-opacity-20 border border-white/30 rounded-xl text-white placeholder-white/60" required />
+  </div>
+  <div class="relative mb-4">
+    <i class="ri-mail-line absolute left-4 top-1/2 -translate-y-1/2 text-white/60"></i>
+    <input type="email" name="email" placeholder="Email" class="pl-10 pr-4 py-3 w-full bg-black bg-opacity-20 border border-white/30 rounded-xl text-white placeholder-white/60" required />
+  </div>
+  <div class="relative mb-4">
+    <i class="ri-lock-password-line absolute left-4 top-1/2 -translate-y-1/2 text-white/60"></i>
+    <input type="password" id="regPassword" name="password" placeholder="Password" class="pl-10 pr-10 py-3 w-full bg-black bg-opacity-20 border border-white/30 rounded-xl text-white placeholder-white/60" required />
+    <i class="ri-eye-line absolute right-4 top-1/2 -translate-y-1/2 text-white/60 cursor-pointer" onclick="togglePassword('regPassword')"></i>
+  </div>
+  <div class="relative mb-4">
+    <i class="ri-lock-password-line absolute left-4 top-1/2 -translate-y-1/2 text-white/60"></i>
+    <input type="password" id="regConfirm" name="confirmPassword" placeholder="Confirm Password" class="pl-10 pr-10 py-3 w-full bg-black bg-opacity-20 border border-white/30 rounded-xl text-white placeholder-white/60" required />
+    <i class="ri-eye-line absolute right-4 top-1/2 -translate-y-1/2 text-white/60 cursor-pointer" onclick="togglePassword('regConfirm')"></i>
+  </div>
+<button type="submit" class="w-full py-3 bg-green-500 rounded-xl hover:bg-green-600 transition flex items-center justify-center gap-2">
+<i class="ri-vip-fill" style="font-size: 20px;"></i>DAFTAR
+</button>
+
+  <button
+    type="button"
+    id="switchToLoginBtn"
+    class="mt-2 w-full text-sm text-center text-blue-400 hover:text-blue-600 underline"
+  >
+    Sudah punya akun? Masuk
+  </button>
+</form>
+
+<div class="social-icons">
+  <a href="https://www.facebook.com/rayhanganteng.rayhanganteng.90?_rdc=1&_rdr" class="facebook" target="_blank" aria-label="Facebook">
+    <i class="ri-facebook-line"></i>
+  </a>
+  <a href="https://instagram.com/rhanray_" class="instagram" target="_blank" aria-label="Instagram">
+    <i class="ri-instagram-line"></i>
+  </a>
+  <a href="https://wa.me/6282197770219" class="whatsapp" target="_blank" aria-label="WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+  </a>
+</div>
+
+<div class="mt-4">
+  <button
+    id="closeModalBtn"
+    class="w-full px-6 py-3 rounded-xl bg-red-800 hover:bg-red-700 transition font-semibold text-white flex items-center justify-center gap-2"
+  >
+    <i class="ri-close-line"></i> 
+  </button>
+</div>
+
   </div>
 </div>
-    </section>
 
-    <!-- About Us Section -->
-    <section id="about" style="padding: 1rem; max-width: 1200px; margin: auto; text-align: center;">
-      <h2>TENTANG KAMI</h2>
-      <p>toko online Terpercaya dan Aman
-        
-      </p>
+<!-- Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-      
-    </section>
-  </main>
+<!-- Modal Toggle Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const userBtn = document.getElementById("userBtn");
+    const loginModal = document.getElementById("loginModal");
+    const closeLoginModal = document.getElementById("closeLoginModal");
 
-  <footer style="text-align:center; padding: 1rem; background:#000; color:white; margin-top: 2rem;">
-    &copy; 2025 DZULFIKAR, Inc.
-  </footer>
+    userBtn.addEventListener("click", () => {
+      loginModal.classList.remove("hidden");
+      loginModal.classList.add("flex");
+    });
 
-  <!-- Bootstrap JS Bundle (includes Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    closeLoginModal.addEventListener("click", () => {
+      loginModal.classList.add("hidden");
+      loginModal.classList.remove("flex");
+    });
 
- <script src="app.js"></script> <!-- Pastikan path-nya sesuai -->
+    loginModal.addEventListener("click", (e) => {
+      if (e.target === loginModal) {
+        loginModal.classList.add("hidden");
+        loginModal.classList.remove("flex");
+      }
+    });
+  });
+</script>
 
+<script src="app.js"></script>
+
+<script src="script.js"></script>
 </body>
 </html>
