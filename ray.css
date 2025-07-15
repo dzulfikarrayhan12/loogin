@@ -711,3 +711,34 @@ nav.navbar #cart-toggle {
 }
 
 
+.payment-carousel {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 45s linear infinite;
+}
+
+.carousel-track img {
+  height: 50px;
+  margin: 0 1rem;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.carousel-track img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
