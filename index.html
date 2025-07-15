@@ -74,17 +74,28 @@
   <!-- produk akan dimuat lewat JS -->
 </section>
 
-<!-- Transaksi -->
-<section id="transaksi" class="text-center p-4 max-w-screen-lg mx-auto">
-  <h2>TRANSAKSI</h2>
-  <p>Metode pembayaran:</p>
-  <div class="payment-carousel flex overflow-x-auto gap-4 py-4">
-    <img src="images/dana.jpeg" alt="Dana" class="h-12" />
-    <img src="images/gopay.jpeg" alt="Gopay" class="h-12" />
-    <img src="images/bni.jpeg" alt="BNI" class="h-12" />
-    <img src="images/bri.jpeg" alt="BRI" class="h-12" />
-  </div>
-</section>
+    <section id="transaksi" style="padding: 1rem; max-width: 1200px; margin: auto; text-align: center;">
+      <h2>TRANSAKSI</h2>
+      <p>Metode pembayaran </p>
+      <!-- Bisa ditambahkan carousel gambar pembayaran di sini -->
+       <div class="payment-carousel">
+  <div class="carousel-track">
+    <img src="images/dana.jpeg" alt="Dana" />
+    <img src="images/gopay.jpeg" alt="Gopay" />
+    <img src="images/bni.jpeg" alt="BNI" />
+    <img src="images/bri.jpeg" alt="BRI" />
+    <!-- Duplikat agar loop terlihat halus -->
+    <img src="images/dana.jpeg" alt="Dana" />
+    <img src="images/gopay.jpeg" alt="Gopay" />
+     <img src="images/bni.jpeg" alt="BNI" />
+    <img src="images/bri.jpeg" alt="BRI" />
+    <!-- Duplikat agar loop terlihat halus -->
+    <img src="images/dana.jpeg" alt="Dana" />
+    <img src="images/gopay.jpeg" alt="Gopay" />
+     <img src="images/bni.jpeg" alt="BNI" />
+    <img src="images/bri.jpeg" alt="BRI" />
+</div>
+    </section>
 
 <!-- Tentang Kami -->
 <section id="about" class="text-center p-4 max-w-screen-lg mx-auto">
@@ -222,7 +233,10 @@
       }
     });
   });
+
+   
 </script>
+
 
 <script src="app.js"></script>
 
