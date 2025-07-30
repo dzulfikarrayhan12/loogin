@@ -742,3 +742,9 @@ nav.navbar #cart-toggle {
     transform: translateX(-50%);
   }
 }
+
+
+#cart-count {
+  background-color: #1B5E20; /* Hijau gelap */
+  color: white;
+}
