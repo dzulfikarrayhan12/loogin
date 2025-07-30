@@ -14,42 +14,71 @@
 <body class="bg-white text-black">
 
 <!-- Navbar -->
-<nav class="navbar flex items-center justify-between px-4 py-2 bg-black text-white relative">
+<nav class="navbar flex items-center justify-between px-4 py-2 bg-black text-white">
+  <!-- Bagian Kiri: Menu, Riwayat, User -->
   <div class="flex items-center space-x-4">
+    <!-- Tombol Menu -->
     <button id="menu-toggle" aria-label="Toggle menu">
       <i class="ri-menu-line text-2xl"></i>
     </button>
-  </div>
 
-  <div id="navbarlogo" class="absolute left-1/2 transform -translate-x-1/2" style="background: linear-gradient(to bottom, #fff, #2b27); -webkit-background-clip: text; color: transparent; font-weight: 900; font-size: 1.25rem;">
-    dzULFIKAR
-  </div>
+    <!-- Tombol Riwayat -->
+    <a href="transaksi.html" class="text-2xl hover:text-gray-300 transition" aria-label="Riwayat">
+      <i class="ri-history-line"></i>
+    </a>
 
-  <div class="flex items-center space-x-4">
+    <!-- Tombol User -->
     <button id="userBtn" class="text-2xl hover:text-gray-300 transition" aria-label="User account">
       <i class="ri-user-line"></i>
     </button>
-    <button id="cart-toggle" aria-label="Toggle cart" class="relative text-2xl">
-      <i class="ri-shopping-bag-3-line"></i>
-      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">0</span>
-    </button>
+  </div>
+
+  <!-- Bagian Kanan: Logo + Keranjang -->
+  <div class="flex items-center space-x-4">
+    <!-- Logo -->
+    <div id="navbarlogo"
+         style="background: linear-gradient(to bottom, #fff, #2b27);
+                -webkit-background-clip: text;
+                color: transparent;
+                font-weight: 900;
+                font-size: 1.25rem;">
+      dzULFIKAR
+    </div>
+
+    <!-- Tombol Keranjang -->
+<button id="cart-toggle" aria-label="Toggle cart" class="relative text-2xl">
+  <i class="ri-shopping-bag-3-line"></i>
+  <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
+</button>
+
   </div>
 </nav>
 
 <!-- Sidebar Menu -->
 <aside id="sidebar-menu" style="position:fixed; inset:0; z-index:9999; display:none; background-color:#000; backdrop-filter:blur(10px); display:flex; flex-direction:column; justify-content:center; align-items:center;">
-  <button id="menu-close" style="position:absolute; top:1rem; right:1.5rem; font-size:2rem; color:white; background:none; border:none;">&times;</button>
+  <button id="menu-close" style="position:absolute; top:1rem; right:1.5rem; font-size:2rem; color:white; background:none; border:none;">
+    <i class="ri-close-line"></i>
+  </button>
   <nav style="text-align:center;">
-    <a href="profil.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">profil</a>
-    <a href="transaksi.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">riwayat</a>
-    <a href="kontak.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">kontak</a>
-      <a href="admin.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">admin</a>
+    <a href="profil.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">
+      <i class="ri-user-line" style="margin-right:8px;"></i> Profil
+    </a>
+    <a href="transaksi.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">
+      <i class="ri-history-line" style="margin-right:8px;"></i> Riwayat
+    </a>
+    <a href="kontak.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">
+      <i class="ri-phone-line" style="margin-right:8px;"></i> Kontak
+    </a>
+    <a href="admin.html" style="color:white; font-size:1.5rem; font-weight:bold; display:block; margin:1rem 0;">
+      <i class="ri-shield-user-line" style="margin-right:8px;"></i> Admin
+    </a>
   </nav>
 </aside>
 
+
 <!-- Sidebar Cart -->
 <aside class="sidebar-cart" id="sidebar-cart">
-  <div class="cart-summary">Keranjang Kamu</div>
+  <div class="cart-summary">Keranjang</div>
   <div class="cart-items" id="cart-items"></div>
   <div class="cart-total-row">
     <span class="cart-total-label">Total Belanja:</span>
